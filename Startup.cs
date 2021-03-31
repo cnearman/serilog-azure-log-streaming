@@ -31,7 +31,7 @@ namespace FunctionSerilog
                         .WriteTo.Console(new RenderedCompactJsonFormatter())
                         .WriteTo.File(
                             new RenderedCompactJsonFormatter(),
-                            @"D:\home\LogFiles\Application\myapp.txt",
+                            @"LogFiles\Application\myapp.txt",
                             fileSizeLimitBytes: 1_000_000,
                             rollOnFileSizeLimit: true,
                             shared: true,
@@ -39,6 +39,11 @@ namespace FunctionSerilog
                         .CreateLogger();
 
             builder.Services.AddLogging(lb => lb.AddSerilog());
+        }
+        public static string GetEnvironmentVariable(string name)
+
+        {
+            return name + ": " + System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
         }
     }
 }
