@@ -31,7 +31,7 @@ namespace FunctionSerilog
                         .WriteTo.Console(new RenderedCompactJsonFormatter())
                         .WriteTo.File(
                             new RenderedCompactJsonFormatter(),
-                            @"LogFiles\Application\myapp.txt",
+                            @"/LogFiles/Application/myapp.txt",
                             fileSizeLimitBytes: 1_000_000,
                             rollOnFileSizeLimit: true,
                             shared: true,
